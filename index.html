@@ -1347,89 +1347,91 @@
   <script>
     // Mock Database (only for core tracking functionality)
     const mockData = {
-      packages: [
-        {
-          tracking_number: 'FX261008JL',
-          status: 'in_transit',
-          service_type: 'FedEx International Priority',
-          current_location: 'Buffalo, NY FedEx Hub',
-          estimated_delivery: '2026-01-12 4:00 PM',
-          ship_date: '2026-01-10',
-          weight: '4500',
-          dimensions: '96" x 120" x 72"',
-          declared_value: 30000.00,
-          contents: '$30,000',
-          reference_number: 'HIGH-VALUE-SHIPMENT-DT',
-          insurance_coverage: 30000.00,
-          progress_percentage: 65,
-          requires_clearance: true,
-          clearance_payment_received: 200,
-          clearance_payment_required: 500,
-          sender_name: 'Elon Musk',
-          sender_company: 'FedEx Office Paris',
-          sender_address: '1 Rocket Road',
-          sender_city: 'Hawthorne, TX 90250, United States',
-          sender_phone: '',
-          recipient_name: 'Steven Venditti',
-          recipient_address: '32 Rory Road',
-          recipient_city: 'Toronto, Ontario, Canada M6L 3G2',
-          recipient_phone: '',
-          recipient_email: 'stevenvenditti20@gmail.com'
-        }
-      ],
-      
-      tracking_events: [
-        {
-          tracking_number: 'FX261008JL',
-          status: 'registered',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-10',
-          event_time: '10:30:00',
-          description: 'Package has been registered at the FedEx facility and secured. Awaiting recipient clearance for processing.',
-          is_latest: false,
-          event_type: 'status_update'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'awaiting_clearance',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-10',
-          event_time: '08:45:00',
-          description: 'Shipment is currently on hold pending recipient clearance approval prior to final processing and residential delivery.',
-          is_latest: false,
-          event_type: 'clearance_hold'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'clearance_partial',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-11',
-          event_time: '14:20:00',
-          description: 'Partial clearance payment of $200 received. Package authorized for initial processing and routing.',
-          is_latest: false,
-          event_type: 'payment_received'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'in_transit',
-          location: 'MEMPHIS, TN',
-          event_date: '2026-01-11',
-          event_time: '18:45:00',
-          description: 'Package departed Memphis International Hub. En route to Buffalo, NY sorting facility.',
-          is_latest: false,
-          event_type: 'departure'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'in_transit',
-          location: 'BUFFALO, NY',
-          event_date: '2026-01-12',
-          event_time: '03:30:00',
-          description: 'Package arrived at Buffalo, NY FedEx Hub. Cleared customs and awaiting final routing to Toronto.',
-          is_latest: true,
-          event_type: 'arrival'
-        }
-      ],
+      // In the mockData packages array:
+packages: [
+  {
+    tracking_number: 'FX261008JL',
+    status: 'in_transit',
+    service_type: 'FedEx International Priority',
+    current_location: 'Buffalo, NY FedEx Hub',
+    estimated_delivery: '2026-01-15 5:30 PM', // Updated from Jan 12
+    ship_date: '2026-01-14', // Updated from Jan 10
+    weight: '4500',
+    dimensions: '96" x 120" x 72"',
+    declared_value: 30000.00,
+    contents: '$30,000',
+    reference_number: 'HIGH-VALUE-SHIPMENT-DT',
+    insurance_coverage: 30000.00,
+    progress_percentage: 65,
+    requires_clearance: true,
+    clearance_payment_received: 200,
+    clearance_payment_required: 500,
+    sender_name: 'Elon Musk',
+    sender_company: 'FedEx Office Paris',
+    sender_address: '1 Rocket Road',
+    sender_city: 'Hawthorne, TX 90250, United States',
+    sender_phone: '',
+    recipient_name: 'Steven Venditti',
+    recipient_address: '32 Rory Road',
+    recipient_city: 'Toronto, Ontario, Canada M6L 3G2',
+    recipient_phone: '',
+    recipient_email: 'stevenvenditti20@gmail.com'
+  }
+],
+
+// In the tracking_events array:
+tracking_events: [
+  {
+    tracking_number: 'FX261008JL',
+    status: 'registered',
+    location: 'HAWTHORNE, TX',
+    event_date: '2026-01-14', // Updated to today
+    event_time: '10:30:00',
+    description: 'Package has been registered at the FedEx facility and secured. Awaiting recipient clearance for processing.',
+    is_latest: false,
+    event_type: 'status_update'
+  },
+  {
+    tracking_number: 'FX261008JL',
+    status: 'awaiting_clearance',
+    location: 'HAWTHORNE, TX',
+    event_date: '2026-01-14', // Updated to today
+    event_time: '08:45:00',
+    description: 'Shipment is currently on hold pending recipient clearance approval prior to final processing and residential delivery.',
+    is_latest: false,
+    event_type: 'clearance_hold'
+  },
+  {
+    tracking_number: 'FX261008JL',
+    status: 'clearance_partial',
+    location: 'HAWTHORNE, TX',
+    event_date: '2026-01-14', // Updated to today
+    event_time: '14:20:00',
+    description: 'Partial clearance payment of $200 received. Package authorized for initial processing and routing.',
+    is_latest: false,
+    event_type: 'payment_received'
+  },
+  {
+    tracking_number: 'FX261008JL',
+    status: 'in_transit',
+    location: 'MEMPHIS, TN',
+    event_date: '2026-01-14', // Updated to today
+    event_time: '18:45:00',
+    description: 'Package departed Memphis International Hub. En route to Buffalo, NY sorting facility.',
+    is_latest: false,
+    event_type: 'departure'
+  },
+  {
+    tracking_number: 'FX261008JL',
+    status: 'in_transit',
+    location: 'BUFFALO, NY',
+    event_date: '2026-01-15', // Updated to tomorrow
+    event_time: '03:30:00',
+    description: 'Package arrived at Buffalo, NY FedEx Hub. Cleared customs and awaiting final routing to Toronto.',
+    is_latest: true,
+    event_type: 'arrival'
+  }
+],
 
       locations: [
         {
@@ -1532,16 +1534,12 @@
     // Core Tracking Functions
     async function trackPackage(trackingNumber) {
       try {
-        const modalContent = document.getElementById('modal-content');
-        const trackingNumberElement = document.getElementById('modal-tracking-number');
-        
-        trackingNumberElement.textContent = trackingNumber;
-        modalContent.innerHTML = `
-          <div class="flex justify-center items-center py-12">
-            <div class="loading-spinner mr-3"></div>
-            <span>Loading package information for Steven Venditti — Expected delivery: Jan 12, 2026 around 4:00 PM</span>
-          </div>
-        `;
+        const modalContent.innerHTML = `
+  <div class="flex justify-center items-center py-12">
+    <div class="loading-spinner mr-3"></div>
+    <span>Loading package information for Steven Venditti — Expected delivery: Jan 15, 2026 around 5:30 PM</span>
+  </div>
+`;
 
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 1000));
@@ -1647,19 +1645,16 @@
                   Your package has been authorized for processing and is currently in transit.
                 </p>
                 <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  📦 <strong>Package Status:</strong> IN TRANSIT - Currently at ${data.current_location} (approximately 4 hours from delivery address)
-                </p>
-                <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  ⚠️ <strong>Important:</strong> Outstanding balance of $${data.clearance_payment_required - data.clearance_payment_received} must be settled within 24 hours to avoid:
-                </p>
-                <ul class="text-yellow-700 text-xs sm:text-sm ml-4 mb-2">
-                  <li>• Daily storage fee of $25 (FedEx priority storage policy)</li>
-                  <li>• Potential delivery delays or complications</li>
-                  <li>• Additional clearance processing fees</li>
-                </ul>
-                <p class="text-yellow-700 text-xs sm:text-sm">
-                  📍 <strong>Next Milestone:</strong> Package will proceed to Mississauga, ON sorting facility upon full payment clearance.
-                </p>
+  ⚠️ <strong>Important:</strong> Outstanding balance of $${data.clearance_payment_required - data.clearance_payment_received} must be settled within 24 hours (by Jan 15, 2026, 2:20 PM) to avoid:
+</p>
+<ul class="text-yellow-700 text-xs sm:text-sm ml-4 mb-2">
+  <li>• Daily storage fee of $25 (FedEx priority storage policy)</li>
+  <li>• Potential delivery delays or complications</li>
+  <li>• Additional clearance processing fees</li>
+</ul>
+<p class="text-yellow-700 text-xs sm:text-sm">
+  📍 <strong>Next Milestone:</strong> Package will proceed to Mississauga, ON sorting facility upon full payment clearance. Expected delivery: Jan 15, 2026 by 5:30 PM
+</p>
               </div>
             </div>
           </div>
